@@ -1,5 +1,5 @@
 ﻿from struct import pack, unpack
-from pyTibia.Classes import *
+from pyTibia.Classes.Position import *
 
 
 class NetMsg(object):
@@ -61,8 +61,8 @@ class NetMsg(object):
 		return ret
 
 	def getPosition(self):
-		return Position(x = self.getU16(), 
-			y = self.getU16(), z = self.getByte())
+		ret = Position(x = self.getU16(), y = self.getU16(), z = self.getByte())
+		return ret
 		
 		
 	#Other

@@ -1,5 +1,5 @@
 ﻿from struct import pack, unpack
-from classes import *
+from pyTibia.Classes import *
 
 
 class NetMsg(object):
@@ -10,6 +10,8 @@ class NetMsg(object):
 		
 	def __init__(self, msg = ''):
 		self._msg = msg
+		if len(msg)>0:
+			self._msgLen = self.getU16()
 		
 	#Add data
 		
@@ -70,8 +72,9 @@ class NetMsg(object):
 		
 	def getPreparedMsg(self):
 		retLen = len(self._msg);
-		return pack('<I', num) + self._msg
+		ret = pack('<H', retLen) + self._msg
+		return ret
 		
-	def reset():
+	def reset(self):
 		self._msg = ''
 		self._readPos = 0

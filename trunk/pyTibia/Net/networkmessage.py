@@ -1,4 +1,6 @@
 ﻿from struct import pack, unpack
+from classes import *
+
 
 class NetMsg(object):
 	u"Class for handle netmsg"
@@ -8,10 +10,6 @@ class NetMsg(object):
 		
 	def __init__(self, msg = ''):
 		self._msg = msg
-		
-	def reset():
-		self._msg = ''
-		self._readPos = 0
 		
 	#Add data
 		
@@ -26,18 +24,17 @@ class NetMsg(object):
 	def addU32(self,num):
 		self._msg += pack('<I', num)	
 		self._readPos += 4
-		
-	def _addMessageLength(self):
-		retLen = len(self._msg);
-		self.addU16(retLen)
-		self._msg += self._msg
-		self._readPos += retLen
-		
+				
 	def addString(self, str):
 		strLen = len(str)
 		self.addU16(strLen)
 		self._msg += str
 		self._readPos += strLen
+		
+	def addPosition(self, pos):
+		self.addU16(pos.x)
+		self.addU16(pos.y)
+		self.addByte(pos.z)
 		
 	#Get data
 	
@@ -61,19 +58,20 @@ class NetMsg(object):
 		self._readPos += strLen
 		return ret
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	def getPosition(self):
+		return Position(x = self.getU16(), 
+			y = self.getU16(), z = self.getByte())
+		
+		
+	#Other
+	
+	def skipBytes(self, count):
+		self._readPos += count
+		
+	def getPreparedMsg(self):
+		retLen = len(self._msg);
+		return pack('<I', num) + self._msg
+		
+	def reset():
+		self._msg = ''
+		self._readPos = 0

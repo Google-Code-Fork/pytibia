@@ -25,7 +25,7 @@ class Protocol76(ProtocolBase):
 		'SPEAK_WHISPER'     :0x02,
 		'SPEAK_YELL'        :0x03,
 		'SPEAK_BROADCAST'   :0x09,
-		'SPEAK_PRIVATE'     :0x4,
+		'SPEAK_PRIVATE'     :0x04,
 		'SPEAK_PRIVATE_RED' :0x0B,
 		'SPEAK_CHANNEL_Y'   :0x05,
 		'SPEAK_CHANNEL_R1'  :0x0A,
@@ -46,6 +46,33 @@ class Protocol76(ProtocolBase):
 			0x14:self.onErrPacket, 
 			0x1E:self.onPingPacket,
 			0xAA:self.onMessagePacket,
+			0x69:self.parseTileUpdated,
+			#0x6d:self.parseThingMove, # ?
+			0x6B:self.parseCreatureTurn,
+			0xA3:self.parseCancelAttacking,
+			0x8F:self.parseChangeSpeed,
+			0xB5:self.parseCancelWalk,
+			0x0A:self.parseThingAppear,
+			0x96:self.parseTextWindow,
+			0xD3:self.parseVIPLogin,
+			0xD4:self.parseVIPLogout,
+			0xD2:self.parseVIP,
+			0xB4:self.parseTextMessage,
+			0x84:self.parseAnimatedText,
+			0x83:self.parseMagicEffect,
+			0x85:self.parseDistanceShoot,
+			0xA0:self.parseUpdateStats,
+			0xA1:self.parseUpdateSkills,
+			0x8C:self.parseAddCreatureHealth,
+			0x6C:self.parseRemoveThing,
+			0x70:self.parseAddItemCparsetainter,
+			0x71:self.parseTransformItemCparsetainer,
+			0x72:self.parseRemoveItemCparsetainter,
+			0x82:self.parseWorldLightLevel,
+			0x8D:self.parsePlayerLightLevel,
+			0x97:self.parseHouseWindow,
+			0x90:self.parseSkull,
+			0x91:self.parsePartyIcparse,
 		}
 		
 	def getLoginPacket(self):
@@ -99,3 +126,167 @@ class Protocol76(ProtocolBase):
 		else:
 			msg.getPosition()
 			print creature, 'say:', msg.getString()
+			
+	def parseTileUpdated(self,msg):
+		pass
+		
+	def parseCreatureTurn(self,msg):
+		pass
+		
+	def parseCancelAttacking(self,msg):
+		pass
+		
+	def parseChangeSpeed(self,msg):
+		pass
+		
+	def parseCancelWalk(self,msg):
+		pass
+		
+	def parseThingAppear(self,msg):
+		pass
+		
+	def parseTextWindow(self,msg):
+		pass
+		
+	def parseVIPLogin(self,msg):
+		pass
+		
+	def parseVIPLogout(self,msg):
+		pass
+		
+	def parseVIP(self,msg):
+		pass
+		
+	def parseTextMessage(self,msg):
+		pass
+		
+	def parseAnimatedText(self,msg):
+		pass
+		
+	def parseMagicEffect(self,msg):
+		pass
+
+	def parseDistanceShoot(self,msg):
+		pass
+
+	def parseUpdateStats(self,msg):
+		pass
+
+	def parseUpdateSkills(self,msg):
+		pass
+
+	def parseAddCreatureHealth(self,msg):
+		pass
+
+	def parseRemoveThing(self,msg):
+		pass
+
+	def parseAddItemCparsetainter(self,msg):
+		pass
+
+	def parseTransformItemCparsetainer(self,msg):
+		pass
+
+	def parseRemoveItemCparsetainter(self,msg):
+		pass
+
+	def parseWorldLightLevel(self,msg):
+		pass
+
+	def parsePlayerLightLevel(self,msg):
+		pass
+
+	def parseHouseWindow(self,msg):
+		pass
+
+	def parseSkull(self,msg):
+		pass
+
+	def parsePartyIcparse(self,msg):
+		pass
+
+			
+			
+			
+			
+			
+			
+	#for user events
+	def onTileUpdated(self,msg):
+		pass
+		
+	def onCreatureTurn(self,msg):
+		pass
+		
+	def onCancelAttacking(self,msg):
+		pass
+		
+	def onChangeSpeed(self,msg):
+		pass
+		
+	def onCancelWalk(self,msg):
+		pass
+		
+	def onThingAppear(self,msg):
+		pass
+		
+	def onTextWindow(self,msg):
+		pass
+		
+	def onVIPLogin(self,msg):
+		pass
+		
+	def onVIPLogout(self,msg):
+		pass
+		
+	def onVIP(self,msg):
+		pass
+		
+	def onTextMessage(self,msg):
+		pass
+		
+	def onAnimatedText(self,msg):
+		pass
+		
+	def onMagicEffect(self,msg):
+		pass
+
+	def onDistanceShoot(self,msg):
+		pass
+
+	def onUpdateStats(self,msg):
+		pass
+
+	def onUpdateSkills(self,msg):
+		pass
+
+	def onAddCreatureHealth(self,msg):
+		pass
+
+	def onRemoveThing(self,msg):
+		pass
+
+	def onAddItemContainter(self,msg):
+		pass
+
+	def onTransformItemContainer(self,msg):
+		pass
+
+	def onRemoveItemContainter(self,msg):
+		pass
+
+	def onWorldLightLevel(self,msg):
+		pass
+
+	def onPlayerLightLevel(self,msg):
+		pass
+
+	def onHouseWindow(self,msg):
+		pass
+
+	def onSkull(self,msg):
+		pass
+
+	def onPartyIcon(self,msg):
+		pass
+

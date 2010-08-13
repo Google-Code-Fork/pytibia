@@ -1,1 +1,1 @@
-﻿ 
+﻿__all__ = ["NetworkMessage", "Protocol"]
